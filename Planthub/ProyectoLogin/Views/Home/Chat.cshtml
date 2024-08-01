@@ -1,0 +1,100 @@
+@{
+    ViewData["Title"] = "Chat grupal";
+}
+
+<h1>Chat grupal</h1>
+
+<div class="chat-container">
+    <div id="messagesList">
+        @* Aquí se mostrarán los mensajes *@
+    </div>
+    <input type="text" id="messageInput" placeholder="Type a comment..." />
+    <button id="sendButton">Send</button>
+    <input type="file" id="imageInput" />
+    <button id="sendImageButton">Send Image</button>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.0.0/signalr.min.js"></script>
+    <script>
+        const nombreUsuario = '@User.Identity.Name';
+        console.log("Nombre de usuario:", nombreUsuario);
+
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/chathub")
+            .build();
+
+        connection.on("ReceiveMessage", (user, message) => {
+            const msg = document.createElement("div");
+            msg.className = "message";
+            msg.innerHTML = `<strong>${user}:</strong> ${message}`;
+            document.getElementById("messagesList").appendChild(msg);
+        });
+
+        connection.on("ReceiveImage", (user, imageUrl) => {
+            const msg = document.createElement("div");
+            msg.className = "message";
+            const img = document.createElement("img");
+            img.src = imageUrl;
+            img.className = 'img-fluid mb-2';
+            img.style.maxWidth = '30%';
+            msg.innerHTML = `<strong>${user}:</strong><br />`;
+            msg.appendChild(img);
+            document.getElementById("messagesList").appendChild(msg);
+        });
+
+        document.getElementById("sendButton").addEventListener("click", event => {
+            const message = document.getElementById("messageInput").value;
+            connection.invoke("SendMessage", nombreUsuario, message).catch(err => console.error(err));
+            document.getElementById("messageInput").value = '';
+            event.preventDefault();
+        });
+
+        document.getElementById("sendImageButton").addEventListener("click", event => {
+            const fileInput = document.getElementById("imageInput");
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const img = new Image();
+                    img.onload = function () {
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        const maxWidth = 2000; // Máximo ancho permitido
+                        const maxHeight = 2000; // Máximo alto permitido
+
+                        let width = img.width;
+                        let height = img.height;
+
+                        if (width > height) {
+                            if (width > maxWidth) {
+                                height = Math.round((height * maxWidth) / width);
+                                width = maxWidth;
+                            }
+                        } else {
+                            if (height > maxHeight) {
+                                width = Math.round((width * maxHeight) / height);
+                                height = maxHeight;
+                            }
+                        }
+
+                        canvas.width = width;
+                        canvas.height = height;
+                        ctx.drawImage(img, 0, 0, width, height);
+
+                        const resizedImageUrl = canvas.toDataURL(file.type);
+                        connection.invoke("SendImage", nombreUsuario, resizedImageUrl).catch(err => console.error(err));
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                console.log("No file selected");
+            }
+            event.preventDefault();
+        });
+
+        connection.start().catch(err => console.error(err));
+    </script>
+}

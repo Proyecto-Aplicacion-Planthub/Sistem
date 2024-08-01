@@ -1,0 +1,786 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.logo img {
+    max-width: 100px;
+}
+
+.search-bar input {
+    width: 300px;
+    padding: 10px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+    .profile img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+    nav ul li {
+        margin-right: 20px;
+    }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+main {
+    display: flex;
+    margin-top: 20px;
+}
+
+.sidebar {
+    width: 25%;
+    padding-right: 20px;
+}
+
+.profile-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+.profile-card h2 {
+    text-align: center;
+}
+
+.shortcuts a {
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-decoration: none;
+    color: #333;
+}
+
+.content {
+    width: 50%;
+    padding-right: 20px;
+}
+
+.create-post {
+    margin-bottom: 20px;
+}
+
+    .create-post input,
+    .create-post textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .create-post button {
+        padding: 10px 20px;
+    }
+
+.posts .post {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+    .posts .post h3,
+    .posts .post h4 {
+        margin: 0;
+    }
+
+    .posts .post .actions {
+        margin-top: 10px;
+    }
+
+        .posts .post .actions input {
+            width: 80%;
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+.news {
+    width: 25%;
+}
+
+    .news h3 {
+        margin-top: 0;
+    }
+
+.news-item {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+    .news-item h4 {
+        margin: 0 0 10px 0;
+    }
+
+
+
+
+
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #F2E6CF;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.logo img {
+    max-width: 100px;
+}
+
+/*CUADRO DE BUSQUEDA*/
+.search-bar {
+    display: flex; /* Usa Flexbox para alinear el ícono y el campo de entrada */
+    align-items: center; /* Alinea verticalmente el ícono y el campo de entrada */
+    background-color: #fff; /* Color de fondo del cuadro de búsqueda */
+    border: 1px solid #ddd; /* Borde del cuadro de búsqueda */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 5px; /* Espaciado interno del contenedor */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar efecto de profundidad */
+    max-width: 400px; /* Ajusta este valor según el largo deseado */
+    margin: 20px auto; /* Espaciado vertical y centrado horizontal */
+}
+
+    .search-bar i {
+        color: #114C5F;
+        font-size: 18px;
+        margin-right: 10px;
+    }
+
+    .search-bar input {
+        flex: 1; /* Permite que el campo de entrada ocupe el espacio restante */
+        padding: 10px; /* Espaciado interno */
+        border: none; /* Sin borde para el campo de entrada */
+        border-radius: 5px; /* Bordes redondeados */
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+        .search-bar input::placeholder {
+            color: #888; /* Color del texto del placeholder */
+        }
+
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+    .profile img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+
+/*Cabecera de las pestañas*/
+nav {
+    background-color: #0799B6;
+    border-bottom: 1px solid #ddd; /* Borde inferior */
+    border-radius: 10px; /* Añade bordes redondeados */
+}
+
+    nav ul {
+        list-style: none;
+        padding: 0; /* Elimina el padding por defecto */
+        margin: 0; /* Elimina el margen por defecto */
+        display: flex; /* Usa Flexbox para alinear los elementos horizontalmente */
+        justify-content: space-around; /* Distribuye los elementos con espacio igual entre ellos */
+    }
+
+        nav ul li {
+            display: flex; /* Usa Flexbox para alinear el ícono y el texto */
+            align-items: center;
+        }
+
+            nav ul li a {
+                text-decoration: none;
+                color: #333; /* Color del texto */
+                font-size: 16px;
+                display: flex;
+                align-items: center; /* Centra verticalmente el ícono y el texto */
+                padding: 10px 20px;
+                border-radius: 5px; /* Bordes redondeados */
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+
+                nav ul li a i {
+                    margin-right: 8px; /* Espaciado a la derecha del ícono */
+                    font-size: 18px; /* Tamaño del ícono */
+                }
+
+                nav ul li a:hover {
+                    background-color: #9CD2D3; /* Color de fondo al pasar el cursor sobre el enlace */
+                    color: white; /* Color del texto al pasar el cursor */
+                }
+
+
+
+
+main {
+    display: flex;
+    margin-top: 20px;
+}
+
+.sidebar {
+    width: 25%;
+    padding-right: 20px;
+}
+
+.profile-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+.profile-card h2 {
+    text-align: center;
+}
+
+.content {
+    width: 50%;
+    padding-right: 20px;
+}
+
+
+
+
+.news {
+    width: 25%;
+}
+
+    .news h3 {
+        margin-top: 0;
+    }
+
+.news-item {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+    .news-item h4 {
+        margin: 0 0 10px 0;
+    }
+
+
+/* BOTON COMENTARIOS */
+.create-post button {
+    background-color: #007bff; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    display: flex; /* Usa Flexbox para alinear el ícono y el texto */
+    align-items: center; /* Centra el ícono y el texto verticalmente */
+    gap: 8px; /* Espacio entre el ícono y el texto */
+    transition: background-color 0.3s ease; /* Efecto de transición para el color de fondo */
+}
+
+    .create-post button i {
+        font-size: 18px; /* Tamaño del ícono */
+    }
+
+    .create-post button:hover {
+        background-color: #9CD2D3; /* Color de fondo cuando el cursor pasa sobre el botón */
+    }
+
+/* BOTON, NOTIFICAIONES */
+.actions button {
+    background-color: #007bff; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    display: flex; /* Usa Flexbox para alinear el ícono y el texto */
+    align-items: center; /* Centra el ícono y el texto verticalmente */
+    gap: 8px; /* Espacio entre el ícono y el texto */
+    transition: background-color 0.3s ease; /* Efecto de transición para el color de fondo */
+}
+
+    .actions button i {
+        font-size: 18px; /* Tamaño del ícono */
+    }
+
+    .actions button:hover {
+        background-color: #9CD2D3; /* Color de fondo cuando el cursor pasa sobre el botón */
+    }
+
+
+/* PERFIL */
+
+.profile-card {
+    background-color: #9CD2D3; /* Color de fondo del cuadro */
+    border: 1px solid #ddd; /* Borde del cuadro */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar efecto de profundidad */
+    text-align: center; /* Centra el contenido */
+    max-width: 200px; /* Ancho máximo del cuadro */
+    margin: 0 auto; /* Centra el cuadro horizontalmente */
+}
+
+    .profile-card img {
+        width: 100px; /* Ancho de la imagen */
+        height: 100px; /* Alto de la imagen */
+        border-radius: 50%; /* Bordes redondeados para la imagen */
+        margin-bottom: 10px; /* Espaciado debajo de la imagen */
+    }
+
+    .profile-card a {
+        text-decoration: none; /* Elimina el subrayado del enlace */
+        color: #007bff; /* Color del texto del enlace */
+        font-weight: bold; /* Texto en negrita */
+        font-size: 16px; /* Tamaño de la fuente */
+        display: inline-block; /* Asegura que el enlace tenga un ancho ajustable */
+        margin-top: 10px; /* Espaciado superior del enlace */
+    }
+
+        .profile-card a:hover {
+            color: #0056b3; /* Color del texto cuando se pasa el ratón sobre el enlace */
+        }
+
+.mi-perfil {
+    color: #097E64; /* Cambia el color a rojo, puedes usar cualquier color que prefieras */
+}
+
+    .mi-perfil:hover {
+        color: #1FC8EA; /* Cambia el color al pasar el cursor por encima, si lo deseas */
+    }
+
+
+
+/* CUADRO DEBAJO DEL PERFIL*/
+.shortcuts {
+    background-color: #9CD2D3; /* Color de fondo del cuadro */
+    border: 1px solid #ddd; /* Borde del cuadro */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar efecto de profundidad */
+    text-align: center; /* Centra el contenido */
+    max-width: 200px; /* Ancho máximo del cuadro */
+    margin: 20px auto; /* Espaciado vertical y centrado horizontal */
+}
+
+    .shortcuts a {
+        display: block; /* Hace que los enlaces se comporten como bloques */
+        color: #114C5F; /* Color del texto del enlace */
+        text-decoration: none; /* Sin subrayado */
+        font-size: 16px; /* Tamaño de la fuente */
+        padding: 10px; /* Espaciado interno */
+        border-radius: 5px; /* Bordes redondeados */
+        margin-bottom: 10px; /* Espaciado debajo de cada enlace */
+        transition: background-color 0.3s ease; /* Efecto de transición para el color de fondo */
+    }
+
+        .shortcuts a:hover {
+            background-color: #9CD2D3; /* Color de fondo cuando el cursor pasa sobre el enlace */
+        }
+
+        .shortcuts a:last-child {
+            margin-bottom: 0; /* Quita el espaciado inferior del último enlace */
+        }
+
+
+
+
+
+
+
+/* CREAR PUBLICACIONES(MEDIO) */
+.create-post {
+    background-color: #9CD2D3; /* Color de fondo del cuadro */
+    border: 1px solid #ddd; /* Borde del cuadro */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar efecto de profundidad */
+    margin-bottom: 20px; /* Espaciado debajo del cuadro */
+    max-width: 600px; /* Ancho máximo del cuadro */
+    margin: 0 auto; /* Centra el cuadro horizontalmente */
+}
+
+    .create-post h3 {
+        background-color: #26E1E1; /* Color de fondo del cuadro del título */
+        border: 1px solid #ddd; /* Borde del cuadro del título */
+        border-radius: 10px; /* Bordes redondeados del cuadro del título */
+        padding: 10px; /* Espaciado interno del cuadro del título */
+        margin: -20px -20px 20px -20px; /* Expande el cuadro del título para que abarque todo el ancho */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra más sutil para el cuadro del título */
+        font-size: 18px; /* Tamaño de la fuente del título */
+        font-weight: bold; /* Texto en negrita para el título */
+        display: flex; /* Usa Flexbox para alinear el ícono y el texto */
+        align-items: center; /* Centra el ícono y el texto verticalmente */
+        gap: 10px; /* Espacio entre el ícono y el texto */
+    }
+
+    .create-post input,
+    .create-post textarea {
+        width: 100%; /* Ancho completo del contenedor */
+        padding: 10px; /* Espaciado interno */
+        border: 1px solid #F2E6CF; /* Borde de los campos de entrada */
+        border-radius: 5px; /* Bordes redondeados */
+        margin-bottom: 10px; /* Espaciado debajo de los campos */
+        font-size: 16px; /* Tamaño de la fuente */
+        box-sizing: border-box; /* Incluye el padding y borde en el ancho total */
+    }
+
+    .create-post textarea {
+        height: 100px; /* Altura fija para el área de texto */
+        resize: vertical; /* Permite cambiar el tamaño verticalmente */
+    }
+
+    .create-post button {
+        background-color: #114C5F; /* Color de fondo del botón */
+        color: white; /* Color del texto del botón */
+        border: none; /* Sin borde */
+        border-radius: 5px; /* Bordes redondeados */
+        padding: 10px 20px; /* Espaciado interno */
+        font-size: 16px; /* Tamaño de la fuente */
+        cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+        display: flex; /* Usa Flexbox para alinear el ícono y el texto */
+        align-items: center; /* Centra el ícono y el texto verticalmente */
+        gap: 8px; /* Espacio entre el ícono y el texto */
+        transition: background-color 0.3s ease; /* Efecto de transición para el color de fondo */
+    }
+
+        .create-post button i {
+            font-size: 18px; /* Tamaño del ícono */
+        }
+
+        .create-post button:hover {
+            background-color: #0056b3; /* Color de fondo cuando el cursor pasa sobre el botón */
+        }
+
+/* COMENTARIO */
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre los elementos */
+    margin-top: 10px; /* Espaciado superior */
+}
+
+    .actions input {
+        width: 100%; /* Ancho completo del contenedor */
+        padding: 10px; /* Espaciado interno */
+        border: 1px solid #ccc; /* Borde de los campos de entrada */
+        border-radius: 5px; /* Bordes redondeados */
+        font-size: 16px; /* Tamaño de la fuente */
+        box-sizing: border-box; /* Incluye el padding y borde en el ancho total */
+        margin-right: 10px; /* Espaciado a la derecha del campo de entrada */
+    }
+
+    .actions button {
+        background-color: #114C5F; /* Color de fondo del botón */
+        color: white; /* Color del texto del botón */
+        border: none; /* Sin borde */
+        border-radius: 5px; /* Bordes redondeados */
+        padding: 10px 20px; /* Espaciado interno */
+        font-size: 16px; /* Tamaño de la fuente */
+        cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+        display: flex; /* Usa Flexbox para alinear el ícono y el texto */
+        align-items: center; /* Centra el ícono y el texto verticalmente */
+        gap: 8px; /* Espacio entre el ícono y el texto */
+        transition: background-color 0.3s ease; /* Efecto de transición para el color de fondo */
+    }
+
+        .actions button i {
+            font-size: 18px; /* Tamaño del ícono */
+        }
+
+        .actions button:hover {
+            background-color: #0056b3; /* Color de fondo cuando el cursor pasa sobre el botón */
+        }
+
+.post-border {
+    background-color: #F2E6CF; /* Color de fondo del cuadro */
+    border: 1px solid #ddd; /* Borde del cuadro */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar efecto de profundidad */
+    max-width: 800px; /* Ancho máximo del cuadro */
+    margin: 20px auto; /* Espaciado vertical y centrado horizontal */
+}
+
+    .post-border h2 {
+        font-size: 25px; /* Tamaño del texto del título */
+        margin: 0 0 10px; /* Espaciado inferior */
+        color: #09159a; /* Color del título */
+    }
+    .post-border h3 {
+        font-size: 20px; /* Tamaño del texto del título */
+        margin: 0 0 10px; /* Espaciado inferior */
+        color: #4273b5; /* Color del título */
+    }
+
+    .post-border p {
+        font-size: 16px; /* Tamaño del texto del contenido */
+        margin: 0 0 10px; /* Espaciado inferior */
+        color: #333; /* Color del texto */
+        line-height: 1.5; /* Altura de línea para mejorar legibilidad */
+    }
+
+    .post-border span {
+        display: block; /* Hace que el timestamp esté en una nueva línea */
+        font-size: 12px; /* Tamaño del texto del timestamp */
+        color: #888; /* Color del texto del timestamp */
+        margin-bottom: 10px; /* Espaciado inferior */
+    }
+
+
+/* Estilos para el cuadro de publicaciones */
+.posts {
+    background-color: #9CD2D3; /* Color de fondo del cuadro */
+    border: 1px solid #ddd; /* Borde del cuadro */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar efecto de profundidad */
+    max-width: 800px; /* Ancho máximo del cuadro */
+    margin: 20px auto; /* Espaciado vertical y centrado horizontal */
+}
+
+.post {
+    margin-bottom: 20px; /* Espaciado debajo del cuadro de publicación */
+}
+
+    .post h3 {
+        font-size: 20px; /* Tamaño del texto del título */
+        margin: 0 0 10px; /* Espaciado inferior */
+        color: #114C5F; /* Color del título */
+    }
+
+    .post p {
+        font-size: 16px; /* Tamaño del texto del contenido */
+        margin: 0 0 10px; /* Espaciado inferior */
+        color: #333; /* Color del texto */
+        line-height: 1.5; /* Altura de línea para mejorar legibilidad */
+    }
+
+    .post span {
+        display: block; /* Hace que el timestamp esté en una nueva línea */
+        font-size: 12px; /* Tamaño del texto del timestamp */
+        color: #888; /* Color del texto del timestamp */
+        margin-bottom: 10px; /* Espaciado inferior */
+    }
+
+.comment {
+    background-color: #f9f9f9; /* Color de fondo del comentario */
+    border: 1px solid #ddd; /* Borde del comentario */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    margin-top: 10px; /* Espaciado superior */
+}
+
+    .comment p {
+        font-size: 14px; /* Tamaño del texto del comentario */
+        margin: 0 0 5px; /* Espaciado inferior */
+    }
+
+    .comment span {
+        font-size: 12px; /* Tamaño del texto del timestamp del comentario */
+        color: #888; /* Color del texto del timestamp del comentario */
+    }
+
+form.comment-form {
+    margin-top: 15px; /* Espaciado superior para separar el formulario de los comentarios */
+}
+
+.actions {
+    display: flex; /* Usa Flexbox para alinear el comentario y el botón */
+    gap: 10px; /* Espacio entre el comentario y el botón */
+}
+
+    .actions input {
+        flex: 1; /* Permite que el campo de entrada ocupe el espacio disponible */
+        padding: 10px; /* Espaciado interno */
+        border: 1px solid #ccc; /* Borde del campo de entrada */
+        border-radius: 5px; /* Bordes redondeados */
+        font-size: 14px; /* Tamaño de la fuente */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para el campo de entrada */
+    }
+
+    .actions button {
+        background-color: #114C5F; /* Color de fondo del botón */
+        color: white; /* Color del texto del botón */
+        border: none; /* Sin borde */
+        border-radius: 5px; /* Bordes redondeados */
+        padding: 10px 20px; /* Espaciado interno */
+        font-size: 14px; /* Tamaño de la fuente */
+        cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+        display: flex; /* Usa Flexbox para alinear el ícono y el texto */
+        align-items: center; /* Centra el ícono y el texto verticalmente */
+        gap: 8px; /* Espacio entre el ícono y el texto */
+        transition: background-color 0.3s ease; /* Efecto de transición para el color de fondo */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para el botón */
+    }
+
+        .actions button i {
+            font-size: 16px; /* Tamaño del ícono */
+        }
+
+        .actions button:hover {
+            background-color: #72a7a8; /* Color de fondo cuando el cursor pasa sobre el botón */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Sombra más grande cuando se pasa el cursor */
+        }
+
+
+/*CHAT*/
+.comment {
+    display: flex;
+    align-items: center;
+}
+
+    .comment img {
+        border-radius: 5px;
+    }
+
+
+/* Estilos para el contenedor del chat */
+.chat-container {
+    background-color: #9CD2D3; /* Color de fondo del cuadro */
+    border: 1px solid #ddd; /* Borde del cuadro */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar efecto de profundidad */
+    max-width: 600px; /* Ancho máximo del cuadro */
+    margin: 20px auto; /* Espaciado vertical y centrado horizontal */
+}
+
+    .chat-container h1 {
+        text-align: center; /* Centrar el texto */
+        color: #114C5F; /* Color del texto */
+    }
+
+/* Estilos para los mensajes del chat */
+.message {
+    background-color: #fff; /* Color de fondo del mensaje */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 10px; /* Espaciado inferior */
+    border: 1px solid #dcdcdc; /* Borde del mensaje */
+}
+
+    .message strong {
+        color: #114C5F; /* Color del nombre de usuario */
+    }
+
+/* Estilos para los campos de entrada y botones */
+input[type="text"] {
+    width: calc(100% - 70px); /* Ancho completo menos el ancho del botón */
+    padding: 10px; /* Espaciado interno */
+    margin: 5px 0; /* Espaciado vertical */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 5px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye el padding y borde en el ancho total */
+}
+
+button {
+    background-color: #114C5F; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    text-align: center; /* Centrar el texto */
+    text-decoration: none; /* Sin subrayado */
+    display: inline-block; /* Para alinear con el campo de entrada */
+    font-size: 16px; /* Tamaño de la fuente */
+    margin: 5px 2px; /* Espaciado alrededor */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+    button:hover {
+        background-color: #0056b3; /d* Color de fondo al pasar el cursor sobre el botón */
+    }
+
+

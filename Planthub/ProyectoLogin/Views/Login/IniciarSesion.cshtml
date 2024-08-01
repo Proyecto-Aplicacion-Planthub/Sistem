@@ -1,0 +1,108 @@
+﻿@{
+    ViewData["Title"] = "Iniciar Sesión";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesion</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster:wght@400&display=swap">
+
+    <style>
+        body {
+            background-color: #9CD2D3; /* Color de fondo personalizado para toda la página */
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff; /* Fondo blanco para el contenedor principal */
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-family: 'Lobster', cursive; /* Aplicar la fuente seleccionada */
+            font-size: 3rem; /* Tamaño de fuente más grande */
+            font-weight: bold; /* Negrita */
+            color: #4a6eb0; /* Color personalizado */
+        }
+
+        p {
+            font-family: 'Poppins', sans-serif; /* Aplicar la fuente seleccionada */
+            font-weight: bold; /* Negrita */
+            font-size: 1.25rem; /* Tamaño de fuente aumentado */
+        }
+
+        footer {
+            background-color: #f0f0f0;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container mt-5 pt-5">
+        <div class="row">
+            <!-- Columna izquierda -->
+            <div class="col-md-6 d-flex flex-column justify-content-center">
+                <h1>PlantHub</h1>
+                <p>Conéctate y comparte con apasionados de las plantas medicinales. Descubre, aprende y crece junto a una comunidad dedicada, mientras exploras nuevas oportunidades para prosperar en el mundo de las plantas. ¡Únete a la conversación y transforma tu pasión en éxito!".</p>
+            </div>
+            <!-- Columna derecha -->
+            <div class="col-12 col-xl-4 col-md-6 ms-auto">
+                <!-- Aquí se agrega la clase ms-auto -->
+                <div class="card border-0 rounded-4 shadow-lg">
+                    <div class="card-header" style="background-color: #0799B6; color: #fff; border: none; border-radius: 0.375rem;">
+                        <h5 class="mb-0">Iniciar Sesión</h5>
+                    </div>
+                    <div class="card-body">
+                        <form asp-controller="Login" asp-action="IniciarSesion" method="post">
+                            <div class="form-group mb-3">
+                                <label for="correo" class="form-label">Correo electrónico o teléfono</label>
+                                <input class="form-control" type="text" id="correo" name="correo" required />
+                            </div>
+                            <div class="form-group mb-4">
+                                <label for="clave" class="form-label">Contraseña</label>
+                                <input class="form-control" type="password" id="clave" name="clave" required />
+                            </div>
+                            <div class="d-grid mb-4">
+                                <button class="btn btn-custom btn-lg" type="submit" style="background-color: #0799B6; border-color: #0799B6; color: #fff;">Iniciar Sesión</button>
+                            </div>
+                            @if (ViewData["Mensaje"] != null)
+                            {
+                                <div class="form-group">
+                                    <div class="alert alert-danger" role="alert">
+                                        @ViewData["Mensaje"]
+                                    </div>
+                                </div>
+                            }
+                        </form>
+                    </div>
+                </div>
+                <div class="signup-link">
+                    ¿No tienes una cuenta? <a href="@Url.Action("Registro","Login")">Registrate!</a>
+                </div>
+                <div class="pages-link">
+                     
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

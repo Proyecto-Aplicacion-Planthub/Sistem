@@ -1,0 +1,200 @@
+﻿@model IEnumerable<ProyectoLogin.Models.Post>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>PlantHub - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a512d16f41.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/css/site.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js" integrity="sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.11/signalr.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="~/images/Imagen1.jpg.png" alt="PlantHub">
+            </div>
+            <div class="search-bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <form asp-action="Index" method="get">
+                    <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" placeholder="Búsqueda">
+                </form>
+            </div>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="#"><i class="fa-solid fa-house"></i> Inicio</a></li>
+                <li><a href="@Url.Action("Chat", "Home")"><i class="fa-brands fa-facebook-messenger"></i> Chat</a></li>
+            </ul>
+        </nav>
+        <main>
+            <aside class="sidebar">
+                <div class="profile-card">
+                    <img src="@ViewData["fotoPerfil"]" alt="Foto de perfil" style="width:100px;height:100px;border-radius:50%;" />
+                    <h2>@ViewData["nombreUsuario"]</h2>
+                    <a href="#">Mi perfil</a>
+                </div>
+                <div class="shortcuts">
+                    <a href="#">Mis pagos</a>
+                    <a href="#">Mis compras</a>
+                    <a href="#">Configuraciones</a>
+                    <a href="#">Recuperar clave de correo</a>
+                </div>
+            </aside>
+            <section class="content">
+                <div class="create-post">
+                    <h3>
+                        <i class="fa-solid fa-comments"></i>
+                        Crear publicaciones
+                    </h3>
+                    <form asp-action="CreatePost" method="post">
+                        <input type="text" name="title" placeholder="titulo de tu publicacion." required>
+                        <textarea name="content" placeholder="Cuéntanos algo 😊" required></textarea>
+                        <button type="submit">
+                            <i class="fa-solid fa-share-from-square"></i> Publicar
+                        </button>
+                    </form>
+                </div>
+                <div class="posts">
+                    @foreach (var post in Model)
+                    {
+                        <div class="post-border">
+                            <h2>Publicado por: @post.UserName</h2>
+                            <h3>Titulo: @post.Title</h3>
+                            <span>Publicación: </span>
+                            <p>@post.Content</p>
+                            <span>@post.CreatedAt.ToString("dd/MMM/yyyy h:mm tt")</span>
+
+                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editModal" data-post-id="@post.Id" data-post-title="@post.Title" data-post-content="@post.Content">
+                                <i class="fa-regular fa-pen-to-square"></i>Editar
+                            </button>
+                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-post-id="@post.Id">
+                                <i class="fa-solid fa-trash-can"></i> Eliminar
+                            </button>
+
+                            <div class="comments mt-3">
+                                @foreach (var comment in post.Comments)
+                                {
+                                    <div class="comment border p-2 mb-2 rounded">
+                                        <p><strong>@comment.UserName: </strong> @comment.Content </p>
+                                        <span>&ensp;&ensp; &ensp; &ensp;&ensp; comentario hecho: @comment.CreatedAt.ToString("dd/MMM/yyyy h:mm tt")</span>
+                                    </div>
+                                }
+                            </div>
+                            <form asp-action="AddComment" method="post" class="comment-form mt-3">
+                                <input type="hidden" name="postId" value="@post.Id" />
+                                <div class="input-group">
+                                    <input type="text" name="content" class="form-control" placeholder="Escribe tu comentario..." required>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fa-solid fa-comments"></i> Comentar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+
+                      <!-- Modal para editar -->
+                        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editModalLabel">Editar Publicación</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form asp-action="EditPost" method="post">
+                                        <div class="modal-body">
+                                            <input type="hidden" name="postId" id="edit-post-id">
+                                            <div class="mb-3">
+                                                <label for="edit-title" class="form-label">Título</label>
+                                                <input type="text" class="form-control" id="edit-title" name="newTitle" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="edit-content" class="form-label">Contenido</label>
+                                                <textarea class="form-control" id="edit-content" name="newContent" required></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal para eliminar -->
+                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalLabel">Confirmar eliminación</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form asp-action="DeletePost" method="post">
+                                        <div class="modal-body">
+                                            <input type="hidden" name="postId" id="delete-post-id">
+                                            <p>¿Estás seguro de que deseas eliminar esta publicación?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            // Script para manejar los datos en el modal de edición
+                            var editModal = document.getElementById('editModal')
+                            editModal.addEventListener('show.bs.modal', function (event) {
+                                var button = event.relatedTarget
+                                var postId = button.getAttribute('data-post-id')
+                                var postTitle = button.getAttribute('data-post-title')
+                                var postContent = button.getAttribute('data-post-content')
+                                var modalTitle = editModal.querySelector('.modal-title')
+                                var modalBodyInputId = editModal.querySelector('#edit-post-id')
+                                var modalBodyInputTitle = editModal.querySelector('#edit-title')
+                                var modalBodyTextareaContent = editModal.querySelector('#edit-content')
+
+                                modalTitle.textContent = 'Editar Publicación ' + postId
+                                modalBodyInputId.value = postId
+                                modalBodyInputTitle.value = postTitle
+                                modalBodyTextareaContent.value = postContent
+                            })
+
+                            // Script para manejar los datos en el modal de eliminación
+                            var deleteModal = document.getElementById('deleteModal')
+                            deleteModal.addEventListener('show.bs.modal', function (event) {
+                                var button = event.relatedTarget
+                                var postId = button.getAttribute('data-post-id')
+                                var modalBodyInputId = deleteModal.querySelector('#delete-post-id')
+
+                                modalBodyInputId.value = postId
+                            })
+                        </script>
+
+
+                    }
+                </div>
+            </section>
+            <aside class="news">
+                <h3><i class="fa-solid fa-bell"></i> Novedades</h3>
+                <div class="news-item">
+                    <p>Te invitamos a disfrutar del siguiente video</p>
+                </div>
+            </aside>
+        </main>
+    </div>
+    <script src="~/js/site.js"></script>
+</body>
+</html>
